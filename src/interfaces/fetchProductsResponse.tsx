@@ -3,6 +3,10 @@ export interface FetchProductsResponse {
     totalCount: number;
     list: ProductsList[];
 }
+export interface TransformProductsResponse {
+    totalCount: number;
+    list: Product[];
+}
 
 export interface ProductsList {
     _id: string;

@@ -1,13 +1,17 @@
+import { useContext } from "react";
 import { harbestProductsApi } from "../api/harbestApi"
+import { PaginationContext } from "../context/paginationContext";
 
 // interfaces
-import { FetchProductsResponse, Product, ProductsList } from "../interfaces/fetchProductsResponse";
+import { FetchProductsResponse, Product, ProductsList, TransformProductsResponse } from "../interfaces/fetchProductsResponse";
 
-export const fetchProducts = async (): Promise<Product[]> => {
+export const fetchProducts = async (currentPage: number): Promise<TransformProductsResponse> => {
+    const res = await harbestProductsApi.get<FetchProductsResponse>(`/?page=${currentPage}&itemsPerPage=5&active=true`);
 
-    const res = await harbestProductsApi.get<FetchProductsResponse>('/?page=0&itemsPerPage=5&active=true');
-
-    return transformProducts(res.data.list);
+    return {
+        totalCount: res.data.totalCount,
+        list: transformProducts(res.data.list)
+    }
 };
 
 const transformProducts = (productsList: ProductsList[]): Product[] => {
