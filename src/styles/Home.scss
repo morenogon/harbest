@@ -1,0 +1,42 @@
+.home {
+  width: 100vw;
+  height: 100vh;
+
+  padding: 24px;
+
+  background-image: url('../assets/background.jpg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+
+  color: #050506;
+
+  > img {
+    width: 350px;
+
+    margin-top: 64px;
+  }
+
+  &__description {
+    margin-bottom: 32px;
+
+    line-height: 48px;
+    font-weight: 500;
+  }
+
+  &__link {
+    padding: 16px 24px;
+
+    border: none;
+    background-color: #feba00;
+    color: white;
+    border-radius: 18px;
+    font-size: 16px;
+    font-weight: 600;
+    text-decoration: none;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+}
